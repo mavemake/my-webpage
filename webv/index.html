@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Webpage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #35424a;
+            color: #ffffff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            margin: 10px 0;
+        }
+        nav a {
+            margin: 0 15px;
+            color: #ffffff;
+            text-decoration: none;
+        }
+        main {
+            padding: 20px;
+            background: #ffffff;
+            margin: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background: #35424a;
+            color: #ffffff;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        #preview img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>karindirya ni Gano</h1>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">Recipe</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<main>
+    <h2>About This Page</h2>
+    <p>Ano kase guys nag try ako hahahahaha bonak kase eh</p>
+    <h3>Features</h3>
+    <ul>
+        <li>Adobo</li>
+        <li>Sinigang</li>
+        <li>litson</li>
+        <li>Curry</li>
+        <li>Menudo</li>
+        <li>Binagoongan</li>
+        <li>Bulalo</li>
+    </ul>
+
+    <h1>Upload Your Photo</h1>
+    <input type="file" id="imageUpload" accept="image/*">
+    <div id="preview" style="display:none;"></div>
+    <button id="submitButton" disabled>Submit</button>
+
+    <script>
+        const imageUpload = document.getElementById('imageUpload');
+        const preview = document.getElementById('preview');
+        const submitButton = document.getElementById('submitButton');
+
+        imageUpload.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = (e) => {
+                preview.innerHTML = `<img src="${e.target.result}">`;
+                preview.style.display = 'block'; // Show the preview
+                submitButton.disabled = false; // Enable the submit button
+            };
+
+            reader.readAsDataURL(file);
+        });
+
+        submitButton.addEventListener('click', () => {
+            // Here you would typically handle the file upload to the server
+            alert('Photo submitted! (This is just a placeholder action.)');
+        });
+    </script>
+</main>
+
+<footer>
+    <p>&copy; 2024 My Sample Webpage. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
